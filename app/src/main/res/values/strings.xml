@@ -17,5 +17,5 @@
     <string name="button_3_sign">3</string>
     <string name="button_equals_sign">=</string>
     <string name="button_0_sign">0</string>
-    <string name="button_comma_sign">,</string>
+    <string name="button_dot_sign">.</string>
 </resources>

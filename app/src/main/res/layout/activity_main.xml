@@ -213,10 +213,10 @@
         android:layout_column="0" />
 
     <Button
-        android:id="@+id/buttonComma"
+        android:id="@+id/buttonDot"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/button_comma_sign"
+        android:text="@string/button_dot_sign"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:textSize="32sp"
