@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="button_clear_sign">C</string>
+    <string name="button_divide_sign">/</string>
+    <string name="button_multiply_sign">*</string>
+    <string name="button_backspace_sign">⌫</string>
+    <string name="button_7_sign">7</string>
+    <string name="button_8_sign">8</string>
+    <string name="button_9_sign">9</string>
+    <string name="button_minus_sign">-</string>
+    <string name="button_4_sign">4</string>
+    <string name="button_5_sign">5</string>
+    <string name="button_6_sign">6</string>
+    <string name="button_plus_sign">+</string>
+    <string name="button_1_sign">1</string>
+    <string name="button_2_sign">2</string>
+    <string name="button_3_sign">3</string>
+    <string name="button_equals_sign">=</string>
+    <string name="button_0_sign">0</string>
+    <string name="button_comma_sign">,</string>
+</resources>
