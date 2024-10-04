@@ -10,13 +10,15 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     private val expression = StringBuilder()
-    private val regex = Regex("^-?\\d+(\\.\\d+)?([+\\-*/]-?\\d+(\\.\\d+)?)*$")
-    private var display: TextView = findViewById(R.id.display)
+    //private val regex = Regex("-?\\d+(\\.\\d+)?[+\\-*/]-?\\d+(\\.\\d+)?(\\s*[+\\-*/]-?\\d+(\\.\\d+)?)*")
+    private val regex = Regex("-?\\d+(\\.\\d+)?(\\s*[+\\-*/]\\s*-?\\d+(\\.\\d+)?)*")
+    private lateinit var display: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setUpEdgeToEdge()
 
+        display = findViewById(R.id.display)
         setUpSymbolButtonsListeners()
         setUpActionButtonsListeners()
     }
@@ -47,10 +49,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun symbolButtonClickListener(value: String) {
         expression.append(value)
-        if (expression.matches(regex)) {
+
+        val expressionToCheck = if (value in "+-*/.")
+            expression.dropLast(1) else expression
+
+        if (expressionToCheck.matches(regex)) {
             display.text = expression.toString()
             return
         }
+        println(expression.toString())
         removeLastChar()
     }
 
@@ -58,14 +65,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonEquals).setOnClickListener {
             with(CalculationUtility.calculate(expression.toString()))
             {
-                expression.clear()
-                if (it == null) {
-                    display.text = "0"
-                    return@with
-                }
-
-                expression.append(it)
-                display.text = expression.toString()
+                display.text = expression.clear().append(this).toString()
             }
         }
 
@@ -80,11 +80,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun removeLastChar() {
-        if (expression.isEmpty()) {
-            display.text = "0"
-            return
-        }
+        if (expression.isEmpty()) return
         expression.deleteCharAt(expression.length - 1)
-        display.text = expression.toString()
+        display.text = if (expression.isEmpty()) "0" else expression.toString()
     }
 }
